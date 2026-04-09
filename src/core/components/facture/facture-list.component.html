@@ -1,0 +1,56 @@
+<div class="min-h-screen bg-gray-50 p-8">
+
+  <!-- Header -->
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-800">Factures</h1>
+    <p class="text-gray-500">Gestion et suivi des factures</p>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+    <div *ngFor="let f of factures"
+         class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 p-5 flex flex-col justify-between">
+
+      <!-- Header -->
+      <div class="flex items-center justify-between mb-4">
+
+        <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 group-hover:bg-gray-200 transition">
+          📄
+        </div>
+
+        <span class="text-xs font-medium px-3 py-1 rounded-full"
+              [ngClass]="getClass(f.statut)">
+          {{ f.statut }}
+        </span>
+
+      </div>
+
+      <!-- Content -->
+      <div class="space-y-1">
+        <h2 class="text-lg font-semibold text-gray-800">
+          {{ f.nom }}
+        </h2>
+
+        <p class="text-sm text-gray-500">
+          {{ f.date }}
+        </p>
+
+        <p class="text-xl font-bold text-gray-900 mt-2">
+          {{ f.montant }} €
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-5">
+        <button (click)="downloadFacture(f)"
+                class="w-full py-2.5 rounded-xl bg-gray-900 text-white text-sm font-medium hover:bg-black transition">
+          Télécharger
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
